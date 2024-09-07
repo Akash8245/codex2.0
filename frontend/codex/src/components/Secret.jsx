@@ -1,21 +1,45 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Choose the theme you like
 
 export default function Secret() {
   const [copySuccess, setCopySuccess] = useState(false);
-  const codeRef = useRef(null);
+  const [code, setCode] = useState(''); // State to store fetched code
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch data from /secrets
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/secret/')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setCode(data.code); // Extract the `code` field from the response
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch code:', err);
+        setError('Failed to fetch code.');
+        setLoading(false);
+      });
+  }, []);
 
   const copyToClipboard = () => {
-    const text = codeRef.current.textContent || '';
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(code)
       .then(() => {
         setCopySuccess(true);
         setTimeout(() => setCopySuccess(false), 2000); // Clear success message after 2 seconds
       })
       .catch(err => console.error('Failed to copy:', err));
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="container mt-5">
@@ -30,8 +54,8 @@ export default function Secret() {
 
       <div className="mt-4">
         <h6>Code Snippet:</h6>
-        <SyntaxHighlighter language="javascript" style={solarizedlight} ref={codeRef}>
-          {`console.log('Hello, World!');`}
+        <SyntaxHighlighter language="python" style={solarizedlight}>
+          {code}
         </SyntaxHighlighter>
         <button 
           className={`btn ${copySuccess ? 'btn-success' : 'btn-primary'} mt-2`} 

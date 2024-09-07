@@ -18,4 +18,9 @@ class BashModel(models.Model):
     def __str__(self):
         return f"{self.no}" 
 
+class SecretModel(models.Model):
+    no = models.PositiveIntegerField()  
+    code = models.TextField()
 
+    def __str__(self):
+        return f"{self.no}" 
