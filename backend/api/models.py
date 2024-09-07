@@ -8,7 +8,7 @@ class PythonModel(models.Model):
 
     def __str__(self):
         return f"{self.no}" 
-    
+     
 class BashModel(models.Model):
     no = models.PositiveIntegerField()  
     title = models.TextField()  
@@ -17,3 +17,5 @@ class BashModel(models.Model):
 
     def __str__(self):
         return f"{self.no}" 
+
+
