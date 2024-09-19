@@ -15,7 +15,6 @@ function App() {
         <Route path="/bash" element={<Bash />} />
         <Route path="/about" element={<About />} />
         <Route path="/secret" element={<Secret />} />
-
       </Routes>
     </Router>
   )

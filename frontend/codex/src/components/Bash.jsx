@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function Bash() {
-  const [tabs, setTabs] = useState([]); 
-  const [activeTab, setActiveTab] = useState(0); 
-  const [copySuccess, setCopySuccess] = useState(false); 
-  const codeRef = useRef(null); 
+  const [tabs, setTabs] = useState([]);
+  const [activeTab, setActiveTab] = useState(0);
+  const [copySuccess, setCopySuccess] = useState(false);
+  const codeRef = useRef(null);
+
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/bash/')
+    fetch('https://akashm8245.pythonanywhere.com/api/bash/')
       .then(response => response.json())
       .then(data => setTabs(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -17,11 +17,11 @@ export default function Bash() {
 
   const copyToClipboard = () => {
     if (codeRef.current) {
-      const codeText = codeRef.current.innerText; 
+      const codeText = codeRef.current.innerText;
       navigator.clipboard.writeText(codeText)
         .then(() => {
           setCopySuccess(true);
-          setTimeout(() => setCopySuccess(false), 2000); 
+          setTimeout(() => setCopySuccess(false), 2000);
         })
         .catch(err => {
           console.error('Failed to copy:', err);
@@ -30,16 +30,19 @@ export default function Bash() {
   };
 
   if (tabs.length === 0) {
-    return <p>Loading...</p>; 
+    return <div className="text-light m-3 vh-100 d-flex align-items-center justify-content-center">Loading...</div>;
   }
 
   return (
-    <div className="container mt-5">
-      <ul className="nav nav-pills">
+    <div 
+      className="d-flex flex-column vh-100 bg-dark text-light"
+      style={{ marginTop: '-18px' }}  // Negative margin of 10px at the top
+    >
+      <ul className="nav nav-tabs bg-dark border-bottom border-secondary flex-shrink-0">
         {tabs.map((tab, index) => (
           <li className="nav-item" key={index}>
             <a
-              className={`nav-link ${activeTab === index ? 'active' : ''}`}
+              className={`nav-link ${activeTab === index ? 'active bg-secondary text-light' : 'text-light'}`}
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -51,30 +54,44 @@ export default function Bash() {
           </li>
         ))}
       </ul>
-
-      <div className="tab-content mt-3">
-        <div className="tab-pane fade show active">
-          <p>{tabs[activeTab].title}</p>
-            <br />
-          <div className="mb-3">
-            <h6>Code Snippet:</h6>
-            <div ref={codeRef}>
-              <SyntaxHighlighter language="bash" style={solarizedlight}>
-                {tabs[activeTab].code}
-              </SyntaxHighlighter>
-            </div>
+      <div className="flex-grow-1 overflow-auto p-3">
+        <h4 className="text-info mb-3">{tabs[activeTab].title}</h4>
+        <div className="mb-3">
+          <h5 className="text-secondary mb-2">Code Snippet:</h5>
+          <div ref={codeRef} className="bg-black border border-secondary rounded">
+            <SyntaxHighlighter 
+              language="bash" 
+              style={vscDarkPlus}
+              customStyle={{
+                backgroundColor: 'transparent',
+                margin: 0,
+                padding: '1rem',
+                fontSize: '14px',
+              }}
+            >
+              {tabs[activeTab].code}
+            </SyntaxHighlighter>
           </div>
-
-          <button
-            className={`btn ${copySuccess ? 'btn-success' : 'btn-primary'}`}
-            onClick={copyToClipboard}
-          >
-            {copySuccess ? 'Copied!' : 'Copy to Clipboard'}
-          </button>
-
-          <div className="mt-3">
-            <h6>Output:</h6>
-            <SyntaxHighlighter language="bash" style={solarizedlight}>
+        </div>
+        <button
+          className={`btn ${copySuccess ? 'btn-success' : 'btn-outline-info'} btn-sm`}
+          onClick={copyToClipboard}
+        >
+          {copySuccess ? 'Copied!' : 'Copy to Clipboard'}
+        </button>
+        <div className="mt-3">
+          <h5 className="text-secondary mb-2">Output:</h5>
+          <div className="bg-black border border-secondary rounded">
+            <SyntaxHighlighter 
+              language="bash" 
+              style={vscDarkPlus}
+              customStyle={{
+                backgroundColor: 'transparent',
+                margin: 0,
+                padding: '1rem',
+                fontSize: '14px',
+              }}
+            >
               {tabs[activeTab].output}
             </SyntaxHighlighter>
           </div>

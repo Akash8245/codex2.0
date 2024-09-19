@@ -9,9 +9,8 @@ export default function Secret() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch data from /secrets
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/secret/')
+    fetch('https://akashm8245.pythonanywhere.com/api/secret/')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -19,7 +18,7 @@ export default function Secret() {
         return response.json();
       })
       .then(data => {
-        setCode(data.code); // Extract the `code` field from the response
+        setCode(data.code); 
         setLoading(false);
       })
       .catch(err => {
@@ -33,7 +32,7 @@ export default function Secret() {
     navigator.clipboard.writeText(code)
       .then(() => {
         setCopySuccess(true);
-        setTimeout(() => setCopySuccess(false), 2000); // Clear success message after 2 seconds
+        setTimeout(() => setCopySuccess(false), 2000); 
       })
       .catch(err => console.error('Failed to copy:', err));
   };
