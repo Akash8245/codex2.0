@@ -19,10 +19,10 @@ export default function Nav() {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">Python</a>
+                  <a className="nav-link active" aria-current="page" href="/">AI</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/bash">Bash</a>
+                  <a className="nav-link active" aria-current="page" href="/bash">Web Technologies</a>
                 </li>
                 <hr />
                 <li className="nav-item">

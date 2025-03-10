@@ -8,6 +8,16 @@ export default function Python() {
   const [copySuccess, setCopySuccess] = useState(false);
   const codeRef = useRef(null);
 
+  // Manually uploaded .ipynb files
+  const notebooks = [
+    { name: 'lab1', url: '/notebooks/lab1.ipynb' },
+    { name: 'lab2', url: '/notebooks/lab2.ipynb' },
+    { name: 'lab3', url: '/notebooks/lab3.ipynb' },
+    { name: 'lab4', url: '/notebooks/lab4.ipynb' },
+    { name: 'lab5', url: '/notebooks/lab5.ipynb' },
+    { name: 'lab6', url: '/notebooks/lab6.ipynb' },
+  ];
+
   useEffect(() => {
     fetch('https://akashm8245.pythonanywhere.com/api/python/')
       .then(response => response.json())
@@ -34,10 +44,7 @@ export default function Python() {
   }
 
   return (
-    <div 
-      className="d-flex flex-column vh-100 bg-dark text-light"
-      style={{ marginTop: '-18px' }}  // Negative margin of 10px at the top
-    >
+    <div className="d-flex flex-column vh-100 bg-dark text-light" style={{ marginTop: '-18px' }}>
       <ul className="nav nav-tabs bg-dark border-bottom border-secondary flex-shrink-0">
         {tabs.map((tab, index) => (
           <li className="nav-item" key={index}>
@@ -59,8 +66,8 @@ export default function Python() {
         <div className="mb-3">
           <h5 className="text-secondary mb-2">Code Snippet:</h5>
           <div ref={codeRef} className="bg-black border border-secondary rounded">
-            <SyntaxHighlighter 
-              language="python" 
+            <SyntaxHighlighter
+              language="python"
               style={vscDarkPlus}
               customStyle={{
                 backgroundColor: 'transparent',
@@ -82,8 +89,8 @@ export default function Python() {
         <div className="mt-3">
           <h5 className="text-secondary mb-2">Output:</h5>
           <div className="bg-black border border-secondary rounded">
-            <SyntaxHighlighter 
-              language="python" 
+            <SyntaxHighlighter
+              language="python"
               style={vscDarkPlus}
               customStyle={{
                 backgroundColor: 'transparent',
@@ -95,6 +102,21 @@ export default function Python() {
               {tabs[activeTab].output}
             </SyntaxHighlighter>
           </div>
+        </div>
+
+        <div className="mt-4">
+          <h5 className="text-secondary mb-2">Download Notebooks:</h5>
+          <ul className="list-group">
+            {notebooks.map((notebook, index) => (
+              <li key={index} className="list-group-item bg-dark border-secondary d-flex justify-content-between align-items-center">
+                <span className="text-light">{notebook.name}</span>
+                <a href={notebook.url} download={`${notebook.name}.ipynb`} className="btn btn-outline-info btn-sm">
+                  Download
+                </a>
+
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
