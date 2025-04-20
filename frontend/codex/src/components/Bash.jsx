@@ -60,7 +60,7 @@ export default function Bash() {
           <h5 className="text-secondary mb-2">Code Snippet:</h5>
           <div ref={codeRef} className="bg-black border border-secondary rounded">
             <SyntaxHighlighter 
-              language="bash" 
+              language="html" 
               style={vscDarkPlus}
               customStyle={{
                 backgroundColor: 'transparent',

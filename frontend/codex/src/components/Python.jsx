@@ -16,6 +16,10 @@ export default function Python() {
     { name: 'lab4', url: '/notebooks/lab4.ipynb' },
     { name: 'lab5', url: '/notebooks/lab5.ipynb' },
     { name: 'lab6', url: '/notebooks/lab6.ipynb' },
+    { name: 'lab7', url: '/notebooks/lab7.ipynb' },
+    { name: 'lab8', url: '/notebooks/lab8.ipynb' },
+    { name: 'lab9', url: '/notebooks/lab9.ipynb' },
+    { name: 'lab10', url: '/notebooks/lab10.ipynb' },
   ];
 
   useEffect(() => {
@@ -45,7 +49,7 @@ export default function Python() {
 
   return (
     <div className="d-flex flex-column vh-100 bg-dark text-light" style={{ marginTop: '-18px' }}>
-      <ul className="nav nav-tabs bg-dark border-bottom border-secondary flex-shrink-0">
+      {/* <ul className="nav nav-tabs bg-dark border-bottom border-secondary flex-shrink-0">
         {tabs.map((tab, index) => (
           <li className="nav-item" key={index}>
             <a
@@ -60,10 +64,10 @@ export default function Python() {
             </a>
           </li>
         ))}
-      </ul>
+      </ul> */}
       <div className="flex-grow-1 overflow-auto p-3">
-        <h4 className="text-info mb-3">{tabs[activeTab].title}</h4>
-        <div className="mb-3">
+        {/* <h4 className="text-info mb-3">{tabs[activeTab].title}</h4> */}
+        {/* <div className="mb-3">
           <h5 className="text-secondary mb-2">Code Snippet:</h5>
           <div ref={codeRef} className="bg-black border border-secondary rounded">
             <SyntaxHighlighter
@@ -79,14 +83,16 @@ export default function Python() {
               {tabs[activeTab].code}
             </SyntaxHighlighter>
           </div>
-        </div>
-        <button
+        </div> */}
+
+        {/* <button
           className={`btn ${copySuccess ? 'btn-success' : 'btn-outline-info'} btn-sm`}
           onClick={copyToClipboard}
         >
           {copySuccess ? 'Copied!' : 'Copy to Clipboard'}
-        </button>
-        <div className="mt-3">
+        </button> */}
+
+        {/* <div className="mt-3">
           <h5 className="text-secondary mb-2">Output:</h5>
           <div className="bg-black border border-secondary rounded">
             <SyntaxHighlighter
@@ -102,10 +108,10 @@ export default function Python() {
               {tabs[activeTab].output}
             </SyntaxHighlighter>
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-4">
-          <h5 className="text-secondary mb-2">Download Notebooks:</h5>
+          <h5 className="text-white mb-2">Download Notebooks:</h5>
           <ul className="list-group">
             {notebooks.map((notebook, index) => (
               <li key={index} className="list-group-item bg-dark border-secondary d-flex justify-content-between align-items-center">
