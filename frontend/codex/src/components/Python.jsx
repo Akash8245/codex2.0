@@ -8,18 +8,10 @@ export default function Python() {
   const [copySuccess, setCopySuccess] = useState(false);
   const codeRef = useRef(null);
 
-  // Manually uploaded .ipynb files
   const notebooks = [
     { name: 'lab1', url: '/notebooks/lab1.ipynb' },
-    { name: 'lab2', url: '/notebooks/lab2.ipynb' },
-    { name: 'lab3', url: '/notebooks/lab3.ipynb' },
-    { name: 'lab4', url: '/notebooks/lab4.ipynb' },
-    { name: 'lab5', url: '/notebooks/lab5.ipynb' },
-    { name: 'lab6', url: '/notebooks/lab6.ipynb' },
-    { name: 'lab7', url: '/notebooks/lab7.ipynb' },
-    { name: 'lab8', url: '/notebooks/lab8.ipynb' },
-    { name: 'lab9', url: '/notebooks/lab9.ipynb' },
-    { name: 'lab10', url: '/notebooks/lab10.ipynb' },
+    // { name: 'lab2', url: '/notebooks/lab2.ipynb' },
+
   ];
 
   useEffect(() => {
