@@ -8,9 +8,23 @@ export default function Python() {
   const [copySuccess, setCopySuccess] = useState(false);
   const codeRef = useRef(null);
 
+  const getDownloadFileName = (item) => {
+    const parts = item.url.split('/');
+    return parts[parts.length - 1] || `${item.name}`;
+  };
+
   const notebooks = [
     { name: 'lab1', url: '/notebooks/lab1.ipynb' },
-    // { name: 'lab2', url: '/notebooks/lab2.ipynb' },
+    { name: 'lab2', url: '/notebooks/lab2.ipynb' },
+    { name: 'lab3', url: '/notebooks/lab3.ipynb' },
+    { name: 'lab4', url: '/notebooks/lab4.ipynb' },
+    { name: 'lab5', url: '/notebooks/lab5.ipynb' },
+    { name: 'Dataset - Employee_data( 1st )', url: '/notebooks/Salary_Data.csv' },
+    { name: 'Dataset - Diabetes ( 2nd )', url: '/notebooks/diabetes.csv' },
+    { name: 'Dataset - IRIS ( 3rd and 4th )', url: '/notebooks/Iris.csv' },
+
+
+
 
   ];
 
@@ -108,7 +122,7 @@ export default function Python() {
             {notebooks.map((notebook, index) => (
               <li key={index} className="list-group-item bg-dark border-secondary d-flex justify-content-between align-items-center">
                 <span className="text-light">{notebook.name}</span>
-                <a href={notebook.url} download={`${notebook.name}.ipynb`} className="btn btn-outline-info btn-sm">
+                <a href={notebook.url} download={getDownloadFileName(notebook)} className="btn btn-outline-info btn-sm">
                   Download
                 </a>
 
