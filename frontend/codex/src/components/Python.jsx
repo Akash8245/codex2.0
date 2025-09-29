@@ -22,8 +22,9 @@ export default function Python() {
     { name: 'Dataset - Employee_data( 1st )', url: '/notebooks/Salary_Data.csv' },
     { name: 'Dataset - Diabetes ( 2nd )', url: '/notebooks/diabetes.csv' },
     { name: 'Dataset - IRIS ( 3rd and 4th )', url: '/notebooks/Iris.csv' },
-
-
+    { name: 'DW & DM  - Emploee CSV ( 1st and 2nd program )', url: '/notebooks/employee.csv' },
+    { name: 'DW & DM  - Emploee xlsx ( 2nd program)', url: '/notebooks/employee.xlsx' },
+    { name: 'DW & DM  - Emploee txt ( 2nd program )', url: '/notebooks/employee.txt' },
 
 
   ];
