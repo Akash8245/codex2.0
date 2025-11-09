@@ -19,13 +19,21 @@ export default function Python() {
     { name: 'lab3', url: '/notebooks/lab3.ipynb' },
     { name: 'lab4', url: '/notebooks/lab4.ipynb' },
     { name: 'lab5', url: '/notebooks/lab5.ipynb' },
+    { name: 'lab6', url: '/notebooks/lab6.ipynb' },
+    { name: 'lab7', url: '/notebooks/lab7.ipynb' },
+    { name: 'lab8', url: '/notebooks/lab8.ipynb' },
+    { name: 'lab9', url: '/notebooks/lab9.ipynb' },
+    { name: 'lab10', url: '/notebooks/lab10.ipynb' },
+    { name: 'lab11', url: '/notebooks/lab11.ipynb' },
+    { name: 'lab12', url: '/notebooks/lab12.ipynb' },
     { name: 'Dataset - Employee_data( 1st )', url: '/notebooks/Salary_Data.csv' },
     { name: 'Dataset - Diabetes ( 2nd )', url: '/notebooks/diabetes.csv' },
     { name: 'Dataset - IRIS ( 3rd and 4th )', url: '/notebooks/Iris.csv' },
+    { name: 'Dataset - Trip Details ( 6th )', url: '/notebooks/tripDetails.csv' },
+    { name: 'Dataset - Air Passengers ( 9th) ', url: '/notebooks/AirPassengers.csv' },
     { name: 'DW & DM  - Emploee CSV ( 1st and 2nd program )', url: '/notebooks/employee.csv' },
     { name: 'DW & DM  - Emploee xlsx ( 2nd program)', url: '/notebooks/employee.xlsx' },
     { name: 'DW & DM  - Emploee txt ( 2nd program )', url: '/notebooks/employee.txt' },
-
 
   ];
 
