@@ -64,7 +64,7 @@ export default function Python() {
 
   return (
     <div className="d-flex flex-column vh-100 bg-dark text-light" style={{ marginTop: '-18px' }}>
-      {/* <ul className="nav nav-tabs bg-dark border-bottom border-secondary flex-shrink-0">
+      <ul className="nav nav-tabs bg-dark border-bottom border-secondary flex-shrink-0">
         {tabs.map((tab, index) => (
           <li className="nav-item" key={index}>
             <a
@@ -79,10 +79,10 @@ export default function Python() {
             </a>
           </li>
         ))}
-      </ul> */}
+      </ul>
       <div className="flex-grow-1 overflow-auto p-3">
-        {/* <h4 className="text-info mb-3">{tabs[activeTab].title}</h4> */}
-        {/* <div className="mb-3">
+        <h4 className="text-info mb-3">{tabs[activeTab].title}</h4>
+        <div className="mb-3">
           <h5 className="text-secondary mb-2">Code Snippet:</h5>
           <div ref={codeRef} className="bg-black border border-secondary rounded">
             <SyntaxHighlighter
@@ -98,16 +98,16 @@ export default function Python() {
               {tabs[activeTab].code}
             </SyntaxHighlighter>
           </div>
-        </div> */}
+        </div>
 
-        {/* <button
+        <button
           className={`btn ${copySuccess ? 'btn-success' : 'btn-outline-info'} btn-sm`}
           onClick={copyToClipboard}
         >
           {copySuccess ? 'Copied!' : 'Copy to Clipboard'}
-        </button> */}
+        </button>
 
-        {/* <div className="mt-3">
+        <div className="mt-3">
           <h5 className="text-secondary mb-2">Output:</h5>
           <div className="bg-black border border-secondary rounded">
             <SyntaxHighlighter
@@ -123,9 +123,9 @@ export default function Python() {
               {tabs[activeTab].output}
             </SyntaxHighlighter>
           </div>
-        </div> */}
+        </div>
 
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <h5 className="text-white mb-2">Download Notebooks:</h5>
           <ul className="list-group">
             {notebooks.map((notebook, index) => (
@@ -138,7 +138,7 @@ export default function Python() {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

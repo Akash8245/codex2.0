@@ -19,11 +19,11 @@ export default function Nav() {
             <div className="offcanvas-body">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">ML</a>
+                  <a className="nav-link active" aria-current="page" href="/">BDA</a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="/bash">Data Warehousing</a>
-                </li>
+                </li> */}
                 <hr />
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="/about">About</a>
